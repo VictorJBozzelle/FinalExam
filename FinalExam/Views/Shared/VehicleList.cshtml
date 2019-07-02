@@ -1,0 +1,31 @@
+﻿@model Vehicle
+
+<table class="table table-striped table-bordered table-sm">
+    <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Year</th>
+        <th class="text-center">Make</th>
+        <th class="text-center">Model</th>
+        <th class="text-center">Mileage</th>
+        <th class="text-center">Actions</th>
+    </tr>
+    <tr>
+        <td class="text-center">@Model.VehicleId</td>
+        <td class="text-center">@Model.Year</td>
+        <td class="text-center">@Model.Make</td>
+        <td class="text-center">@Model.Model</td>
+        <td class="text-center">@Model.Mileage</td>
+        <td class="text-center">
+            <form asp-action="Delete" method="post">
+                <a asp-action="Edit" class="btn btn-sm btn-warning"
+                   asp-route-vehicleId="@Model.VehicleId">
+                    Edit
+                </a>
+                <input type="hidden" name="VehicleId" value="@Model.VehicleId" />
+                <button type="submit" class="btn btn-danger btn-sm">
+                    Delete
+                </button>
+            </form>
+        </td>
+    </tr>
+</table>
