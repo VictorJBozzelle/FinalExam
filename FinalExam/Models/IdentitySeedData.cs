@@ -1,8 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Razor.Internal;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace FinalExam.Models
 {
@@ -14,9 +11,9 @@ namespace FinalExam.Models
         public static async Task EnsurePopulated(UserManager<IdentityUser> userManager)
         {
             IdentityUser user = await userManager.FindByIdAsync(adminUser);
-            if( user==null )
+            if(user == null)
             {
-                user=new IdentityUser("Admin");
+                user = new IdentityUser("Admin");
                 await userManager.CreateAsync(user, adminPassword);
             }
         }

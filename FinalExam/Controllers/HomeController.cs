@@ -15,25 +15,25 @@ namespace FinalExam.Controllers
 
         public HomeController(IVehicleRepository repo)
         {
-            repository=repo;
+            repository = repo;
         }
 
         [AllowAnonymous]
         public ViewResult Index() => View(new VehicleListViewModel
-        { Vehicles=repository.GetVehicles });
+        { Vehicles = repository.GetVehicles });
 
         public ViewResult Create() => View("Edit", new Vehicle());
 
         public ViewResult Edit(int VehicleId) =>
-           View(repository.GetVehicles.FirstOrDefault(v => v.VehicleId==VehicleId));
+           View(repository.GetVehicles.FirstOrDefault(v => v.VehicleId == VehicleId));
 
         [HttpPost]
         public IActionResult Edit(Vehicle Vehicle)
         {
-            if( ModelState.IsValid )
+            if(ModelState.IsValid)
             {
                 repository.SaveVehicle(Vehicle);
-                TempData["message"]=$"{Vehicle.Make + " " + Vehicle.Model} has been saved";
+                TempData["message"] = $"{Vehicle.Make + " " + Vehicle.Model} has been saved";
                 return RedirectToAction("Index");
             }
             else
@@ -47,9 +47,9 @@ namespace FinalExam.Controllers
         public IActionResult Delete(int VehicleId)
         {
             Vehicle deletedVehicle = repository.DeleteVehicle(VehicleId);
-            if( deletedVehicle!=null )
+            if(deletedVehicle != null)
             {
-                TempData["message"]=$"{deletedVehicle.Make + " " + deletedVehicle.Model} was deleted";
+                TempData["message"] = $"{deletedVehicle.Make + " " + deletedVehicle.Model} was deleted";
             }
             return RedirectToAction("Index");
         }

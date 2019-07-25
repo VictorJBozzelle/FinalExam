@@ -16,7 +16,8 @@ namespace FinalExam.Controllers
         public AccountController(UserManager<IdentityUser> userMgr,
             SignInManager<IdentityUser> signInMgr)
         {
-            userManager = userMgr; signInManager = signInMgr;
+            userManager = userMgr;
+            signInManager = signInMgr;
 
             IdentitySeedData.EnsurePopulated(userMgr).Wait();
         }
@@ -32,13 +33,13 @@ namespace FinalExam.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel loginModel)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 IdentityUser user = await userManager.FindByNameAsync(loginModel.Name);
-                if (user != null)
+                if(user != null)
                 {
                     await signInManager.SignOutAsync();
-                    if ((await signInManager.PasswordSignInAsync(user, loginModel.Password, false, false)).Succeeded)
+                    if((await signInManager.PasswordSignInAsync(user, loginModel.Password, false, false)).Succeeded)
                     {
                         return Redirect(loginModel?.ReturnUrl ?? "/Admin/Index");
                     }
@@ -49,7 +50,8 @@ namespace FinalExam.Controllers
         }
         public async Task<RedirectResult> Logout(string returnUrl = "/")
         {
-            await signInManager.SignOutAsync(); return Redirect(returnUrl);
+            await signInManager.SignOutAsync();
+            return Redirect(returnUrl);
         }
     }
 }

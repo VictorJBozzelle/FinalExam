@@ -1,8 +1,5 @@
-﻿using System.Linq;
-using FinalExam.Data;
-using FinalExam.Models;
+﻿using FinalExam.Data;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using FinalExam.Models.ViewModels;
 
 namespace FinalExam.Views.Shared.Components

@@ -15,7 +15,7 @@ namespace FinalExam.Infrastructure
 
         public PageLinkTagHelper(IUrlHelperFactory helperFactory)
         {
-            urlHelperFactory=helperFactory;
+            urlHelperFactory = helperFactory;
         }
 
         [ViewContext]

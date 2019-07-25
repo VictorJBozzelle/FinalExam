@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using FinalExam.Models;
-using System.Threading.Tasks;
-using System.Collections.Generic;
+﻿using FinalExam.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
@@ -12,7 +8,7 @@ namespace FinalExam.Data
     {
         public DealershipContext(DbContextOptions<DealershipContext> options) : base(options) { }
 
-        public DbSet<Vehicle> Vehicles { get; set;}
+        public DbSet<Vehicle> Vehicles { get; set; }
 
     }
 }
